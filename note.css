@@ -1,0 +1,293 @@
+/* ===================== VARIABLES ===================== */
+:root{
+  --panel: rgba(245,245,247,.92);
+  --panel-border: rgba(255,255,255,.7);
+  --shadow: 0 30px 80px rgba(0,0,0,.25);
+
+  --note: rgba(255,255,255,.9);
+  --note-border: rgba(255,255,255,.6);
+
+  --text:#111;
+  --sub:#666;
+
+  --blur: blur(22px);
+
+  --user-font-size:16px;
+  --user-font-family:-apple-system,BlinkMacSystemFont,Inter;
+
+  --glass:.45;
+}
+
+/* DARK */
+html[data-na-theme="dark"]{
+  --panel:#1e1f22;
+  --note:#242529;
+  --note-border:rgba(255,255,255,.12);
+  --text:#ffffff;
+  --sub:#bbbbbb;
+}
+
+/* GLASS */
+html[data-na-theme="glass"]{
+  --panel:rgba(255,255,255,calc(var(--glass)));
+  --note:rgba(255,255,255,calc(var(--glass)+.12));
+}
+
+/* STICKY */
+html[data-na-theme="sticky"]{
+  --panel:#fff48f;
+  --note:#fff48f;
+  --note-border:#e6d470;
+  --text:#222;
+  --sub:#555;
+}
+
+/* ================= PANEL ================= */
+#na-panel{
+  position:fixed;
+  right:20px;
+  top:20px;
+  width:380px;
+  height:calc(100vh - 40px);
+  border-radius:24px;
+  padding:20px;
+  background:var(--panel);
+  border:1px solid var(--panel-border);
+  box-shadow:var(--shadow);
+  backdrop-filter:var(--blur);
+  display:flex;
+  flex-direction:column;
+  z-index:2147483647;
+  color:var(--text);
+}
+
+.na-panel-header{
+  display:flex;
+  justify-content:space-between;
+  font-size:20px;
+  font-weight:800;
+  align-items:center;
+}
+
+/* Close Button */
+#na-close{
+  width:30px;
+  height:30px;
+  border-radius:10px;
+  border:1px solid var(--note-border);
+  background:rgba(255,255,255,.9);
+  color:#111;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+html[data-na-theme="dark"] #na-close{
+  background:#2e2f33;
+  color:white;
+}
+html[data-na-theme="sticky"] #na-close{
+  background:#ffefa5;
+}
+#na-close:hover{
+  transform:scale(1.05);
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+
+/* ================= BUTTONS PANEL ================= */
+.na-buttons{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin:16px 0;
+}
+
+.na-buttons button,
+#settings{
+  height:46px;
+  border-radius:14px;
+  border:1px solid var(--note-border);
+  background:white;
+  cursor:pointer;
+  font-weight:700;
+  color:#111 !important;
+}
+
+html[data-na-theme="dark"] .na-buttons button,
+html[data-na-theme="dark"] #settings{
+  background:#ffffff;
+  color:#111 !important;
+}
+
+html[data-na-theme="sticky"] .na-buttons button,
+html[data-na-theme="sticky"] #settings{
+  background:#fffdf2;
+  color:#111 !important;
+}
+
+/* ================= SETTINGS BUTTONS ================= */
+.na-settings-box button{
+  background:white !important;
+  color:#111 !important;
+  border:1px solid var(--note-border);
+  padding:10px 16px;
+  border-radius:14px;
+  font-weight:700;
+}
+
+/* ================= THEME TICK ================= */
+.theme-card{
+  position:relative;
+  cursor:pointer;
+}
+.theme-card.active::after{
+  content:"✓";
+  position:absolute;
+  right:10px;
+  top:6px;
+  font-size:18px;
+  font-weight:900;
+  color:#111;
+}
+html[data-na-theme="dark"] .theme-card.active::after{
+  color:white;
+}
+
+/* ================= NOTES ================= */
+.na-note{
+  position:absolute;
+  background:var(--note);
+  border-radius:18px;
+  border:1px solid var(--note-border)!important;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+  display:flex;
+  flex-direction:column;
+  color:var(--text);
+  overflow:hidden;
+  backdrop-filter:var(--blur);
+}
+
+.na-header{
+  height:34px;
+  padding:0 10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:grab;
+  color:var(--sub);
+  font-weight:700;
+}
+
+/* Mac buttons */
+.na-controls{
+  display:flex;
+  gap:8px;
+}
+.na-controls button{
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+}
+.na-controls .cls{ background:#ff5f57; }
+.na-controls .min{ background:#f4bf4f; }
+.na-controls .pin{ background:#d0d0d0; }
+.na-controls .pin.active{ background:#28c940; }
+
+/* ================= BODY ================= */
+.na-body{
+  position:relative;
+  flex:1;
+  display:flex;
+  width:100%;
+  height:100%;
+  padding-bottom:48px;
+  box-sizing:border-box;
+  overflow:visible !important;
+}
+
+/* ========= TEXTAREA (SCOPED NOW) ========= */
+.na-note textarea{
+  flex:1;
+  width:100%;
+  height:100%;
+  box-sizing:border-box;
+  border:none!important;
+  outline:none!important;
+  resize:none;
+  background:var(--note);
+  color:var(--text)!important;
+  font-size:var(--user-font-size);
+  font-family:var(--user-font-family);
+  padding:18px;
+  overflow-y:auto;
+}
+
+/* ================= RULED ================= */
+html[data-na-ruled="1"] .na-note textarea{
+  background:
+    linear-gradient(var(--note), var(--note)),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent calc(var(--user-font-size)*1.55 - 2px),
+      rgba(0,0,0,.35) calc(var(--user-font-size)*1.55 - 2px),
+      rgba(0,0,0,.35) calc(var(--user-font-size)*1.55)
+    );
+}
+
+/* ================= Scrollbars (SCOPED NOW) ================= */
+.na-note textarea::-webkit-scrollbar{ width:10px; }
+.na-note textarea::-webkit-scrollbar-thumb{
+  background:#9d9d9d;
+  border-radius:8px;
+}
+
+/* ================= Resize Handle ================= */
+.na-resize{
+  position:absolute;
+  right:6px;
+  bottom:6px;
+  width:22px;
+  height:22px;
+  border-radius:8px;
+  background:rgba(0,0,0,.45);
+  cursor:nwse-resize;
+  z-index:9999;
+  pointer-events:auto;
+}
+.na-resize::before{ content:none; }
+
+/* ================= Minimized ================= */
+.na-note.minimized .na-body,
+.na-note.minimized .na-resize{
+  display:none!important;
+}
+.na-note.minimized{
+  height:38px!important;
+}
+
+/* ================= SETTINGS POPUP ================= */
+.na-settings{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:2147483647;
+}
+
+.na-settings-box{
+  width:520px;
+  background:var(--panel);
+  border-radius:22px;
+  padding:20px;
+  border:1px solid var(--panel-border);
+  box-shadow:var(--shadow);
+  backdrop-filter:var(--blur);
+  color:var(--text);
+}
