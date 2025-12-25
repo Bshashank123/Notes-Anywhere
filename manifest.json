@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Notes — Anywhere",
+  "version": "3",
+  "description": "Beautiful floating notes. Anywhere on the web. Apple-grade polish.@251225",
+  "permissions": ["storage", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Notes — Anywhere",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["note.css"]
+    }
+  ]
+}
