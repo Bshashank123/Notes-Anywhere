@@ -73,25 +73,11 @@ no clutter, no distractions, just quick note-taking wherever you are on the web.
 
 ---
 
-## 🚀 Future Improvements
-
-* ☁️ Sync notes across devices
-* 🧩 Multiple notes per page
-* 🎨 Theme customization (dark mode, colors)
-* 📌 Pin & organize notes
-
----
-
 ## 👤 Author
 
-**Your Name**
-Portfolio: https://your-portfolio.com
+**B Shashank**
+Portfolio: https://github.com/Bshashank123
 
----
-
-## 📄 License
-
-MIT License
 
 ---
 
